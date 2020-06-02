@@ -1,0 +1,16 @@
+初始化数据库表:
+在创建用户和密码的时候出错，
+提示：ERROR 1227 (42000): Access denied; you need (at least one of) the CREATE USER privilege(s) for this operation
+解决方案：
+1、进入mysql 准备关闭mysql
+mysql># service mysqld stop
+2、执行
+mysql># mysqld_safe --skip-grant-table
+3、退出之后重新进入
+用此命令进入：mysql -u root mysql
+
+delete from user where USER='';
+FLUSH PRIVILEGES;
+再次退出，然后重新进入mysql
+mysql -u root -p
+提示输入密码的时候直接回车进入 输入创建用户命令，这时候就可以成功创建了。
